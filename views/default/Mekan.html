@@ -1,0 +1,31 @@
+{{extend "template.html"}}
+
+<a name="mekan-scroll"></a><!-- #mekan-scroll -->
+<div class="page-title">
+		<h1>{{=page_title}}</h1>
+	</div>
+<div class="mekan-genel">
+	{{for i in gallery:}}
+		<div class="mekan">
+			<div class="mekan-resim">
+				
+				{{=(A(IMG(_src=URL('download', args=i.dosya)), _href=URL('yorum', args=i.id)))}}
+			
+			</div>
+		</div>
+	{{pass}}
+</div>
+
+
+<!--web2py ile next ve previous resim geçişi.....-->	
+<div class="buttons">
+{{if page>0:}}
+	{{=A('Önceki', _class='btn btn-large btn-primary', 
+	_style='width:20%; height:20%;', _href=URL(args=(page_title,page-1)))}}
+{{pass}}
+
+
+{{if len(gallery)>=6:}}
+	{{=A('Sonraki', _class='btn btn-large btn-primary', _style='width:20%; height:20%; ', _href=URL(args=(page_title,page+1)))}}
+{{pass}}
+</div>

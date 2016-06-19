@@ -1,0 +1,32 @@
+{{extend "template.html"}}
+<!--yorumları olan resimleri yüklüyor.-->
+{{def resim_yukle(id):
+    image = db.gallery(id)
+	print(image)
+    return A(IMG(_src=URL('download', args=image.dosya), _width="600px"), _href=URL('yorum', args=image.id))
+	
+}}
+<div class="page-title">
+		<h1>{{=page_title}}</h1>
+	</div>
+<div class="yorumlarım-genel">
+
+
+		{{if len(kullanici_comments):}}
+			<table class="yorumlarım-liste">
+			
+			{{for i in kullanici_comments:}}
+				<tr>
+				<td id="yorumlarim">{{=resim_yukle(i.gallery_id)}}</td>
+				</tr>
+				<td id="yorumlarim2">{{=i.icerik}} {{=A('Yorumu Düzenle', _class='btn btn-primary', _href=URL('update_yorumlar', args=i.id))}}</td>
+
+					
+				
+			{{pass}}
+			</table>	
+		{{else:}}
+			<h3 id="no-post">Henüz yorumunuz yok</h3>
+		{{pass}}
+		
+</div>

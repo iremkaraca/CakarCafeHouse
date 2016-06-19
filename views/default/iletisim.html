@@ -1,0 +1,34 @@
+{{extend "template.html"}}
+
+<a name="iletisim-scroll"></a><!-- #iletisim-scroll -->
+<div class="page-title">
+		<h1>{{=page_title}}</h1>
+</div>
+<div class="adres-tablo">
+		<table class="tablo">
+		<thead>
+			<th colspan="2">Adres Bilgileri </th>
+		</thead>
+		<tbody>
+			<tr > 
+				<td> Adres: </td>
+				<td id="adres"> Çakar Cafe & House
+					 Kötekli / Muğla (kötekli), 48000 Muğla</td>
+			</tr>
+			<tr>
+				<td > Telefon:  </td>
+				<td id="adres"> 05302347758</td>
+			</tr>
+		</tbody>
+		</table>
+	</div>
+
+<div class="iletisim">
+	<ul>
+		<li><a href="{{=URL('soru_iletisim')}}#soru-form-scroll"><h3>İletişim Formu</h3></a></li>
+		<li><a href="{{=URL('rezervasyon_iletisim')}}#rezervasyon-scroll"><h3>Rezervasyon Formu</h3></a></li>
+	</ul>
+
+
+	
+</div>

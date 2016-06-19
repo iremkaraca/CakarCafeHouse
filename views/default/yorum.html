@@ -1,0 +1,67 @@
+{{extend "template.html"}}
+
+<div class="yorum">
+	
+	 <div class="yorum-resim">
+			<div style="text-align:center; background-color:#aaa;">
+			<img width=900px height=600px style="border:8px ridge gray;"
+			src="{{=URL('download', args=resim.dosya)}}" />
+			</div>
+			<div class="page-title" style="margin-top:10px;">
+				<h1>{{=page_title}}</h1>
+			</div>
+			<div class="yorum-hepsi">
+			
+			<div class="yorumlar">
+				<table>
+					
+					{{if len(comments):}}
+						{{for i in comments:}}
+						<tr id="satır">
+							
+							<td class="sütun1"> {{=i.created_by.first_name}} {{=i.created_by.last_name}} </td>
+							<td class="sütun2"> tarafından yorum yapıldı: </td>
+							<td class="sütun3"> {{=i.icerik}} </td>
+							<td class="sütun4">{{=T(prettydate(i.created_on))}}  </td>
+						</tr>
+						<tr>
+							<td>
+								{{if i.created_by==auth.user_id:}}
+									{{=A('Yorumu Düzenle', _class='btn btn-primary', _href=URL('update_yorumlar', args=i.id))}}
+									
+								{{elif auth.user_id==auth.id_group(role="admin"):}}
+									{{print(auth.user)}}
+									{{=A('Yorumu Düzenle', _class='btn btn-primary', _href=URL('update_yorumlar', args=i.id))}}
+								{{pass}}
+								
+								
+							</td>
+						</tr>
+						{{pass}}
+					{{else:}}
+						<h3 id="no-post">Henüz yorum yapılmamış...</h3>
+					{{pass}}
+				</table>
+			 </div>
+			<div class="yorum-form">
+
+				{{if form:}}
+					{{=form}}
+				{{else:}}
+					
+					<h4>Lütfen yorum yapmak için
+					{{=A('Kayıt ol', _href=URL('default', 'user', args='register', vars=dict(_next=URL(args=request.args, vars=request.vars))), _style='text-decoration:underline; color:#EF322C;')}}
+					ya da 
+					{{=A('Giriş', _href=URL('default', 'user', args='login', vars=dict(_next=URL(args=request.args, vars=request.vars))), _style='text-decoration:underline; color:#EF322C;')}} yapınız.
+					</h4>
+				{{pass}}
+			</div>
+			</div>
+			 
+	
+	</div>
+</div>
+
+
+
+

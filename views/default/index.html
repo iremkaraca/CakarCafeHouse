@@ -1,0 +1,20 @@
+{{extend 'template.html'}}
+<!--
+{{if session.flash:}}
+	<div class="flash">
+		{{=response.flash}}
+	</div>
+{{pass}}-->
+<div class="hosgeldiniz">
+	 <div class="hosgeldiniz-part">
+		 <h2>Hoşgeldiniz</h2>
+		 <p>Çakar Cafe&House kalite kontrol testleriyle güvenilir, en iyi fiyat garantisiyle uygun, personel samimiyetiyle en iyi hizmet veren; müşteri memnuniyetini ön planda tutup en iyi hizmeti vermeye çalışan bir Ailedir...</p>
+		 <div class="hosgeldin-resim">
+			{{for i in random:}}
+				{{=(A(IMG(_src=URL('download', args=i.dosya)), _href=URL('yorum', args=i.id)))}}
+			{{pass}}
+		 </div>	 
+	</div>
+</div>
+</body>
+</html>

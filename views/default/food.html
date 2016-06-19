@@ -1,0 +1,29 @@
+{{extend "template.html"}}
+
+<a name="food-scroll"></a> <!-- #food-scroll -->
+
+<div class="food">
+	<div class="page-title">
+		<h1>{{=page_title}}</h1>
+	</div>
+	
+	<div class="yemekler">
+		<ul>
+			{{for k in foods :}}
+			<li>
+				<div class="yemek-hepsi">
+				<div class="yemek-resim">
+					<img id="resimler" src="{{=URL('download', args=k.image)}}">
+				</div>
+				<div class="yemek-özellik">
+					<h2>{{=k.food_name}}</h2>
+					<h4>{{=k.description}}</h4>
+					<h4 id="fiyat">Fiyatı:{{=k.price}} TL</h4>
+				</div>
+				</div>
+			</li>
+			{{pass}}
+		</ul>
+	</div>
+</div>
+

@@ -1,0 +1,17 @@
+{{extend "template.html"}}
+
+<div class="menu">
+	<a name="menu-scroll"></a> <!-- #menu-scroll -->
+	
+	<div class="page-title">
+		<h1>{{=page_title}}</h1>
+	</div>
+	
+	<div class="kategoriler">
+		{{for i in categories:}}
+		<div class="kategori-divide"><br>
+			<p>{{=(A(i.category_name, _href=URL("food", args=i.id)))}}</p>
+		</div>
+		{{pass}}
+	</div>
+</div>

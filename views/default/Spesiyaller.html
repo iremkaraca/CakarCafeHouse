@@ -1,0 +1,24 @@
+{{extend "template.html"}}
+<a name="spesiyal-scroll"></a>
+<div class="spesiyaller">
+{{for i in spesiyaller:}}
+<table class="spesiyaller-tablo">
+	<thead>
+	<th colspan="2">{{=i.food_name}}</th>
+	</thead>
+	<tbody>
+	<tr>
+	<td id="spesiyaller-sütun">{{=(A(IMG(_src=URL('download', args=i.image))))}} </td>
+	<td id="spesiyaller-sütun">{{=i.hikaye}}</td>
+	</tr>
+	</tbody>
+</table>
+	
+{{pass}}
+
+</div>
+
+
+
+
+
